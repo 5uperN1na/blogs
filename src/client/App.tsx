@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Details from './views/Details';
 import Home from './views/Home';
 import Edit from './views/Edit';
+import Compose from './views/Compose';
 
 
 const App: React.FC<AppProps> = (props) => {
@@ -14,6 +15,11 @@ const App: React.FC<AppProps> = (props) => {
 				<Route exact path="/">
 					<Home />
 				</Route>
+
+				<Route exact path="/compose">
+					<Compose />
+				</Route>
+
 				<Route exact path="/details/:blogid">
 					<Details />
 				</Route>

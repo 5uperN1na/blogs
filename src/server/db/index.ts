@@ -1,6 +1,8 @@
 import * as mysql from 'mysql';
 import blogs from './queries/blogs';
 import blogtags from './queries/blogtags';
+import tags from './queries/tags';
+import authors from './queries/authors';
 import { rejects } from 'assert';
 import { resolve } from 'path';
 
@@ -101,13 +103,15 @@ const pool = mysql.createPool({
 //     })
 // }
 
- 
 
 
-// //Query function that references from db/queries/chirps.ts
+//Helper function to use queries
 
-export const Query = <T = any> (query: string, values?: any) => {
+
+export const Query = <T = any>(query: string, values?: any) => {
     return new Promise<T>((resolve, reject) => {
+        const sql = mysql.format(query, values);
+
         pool.query(query, values, (err, results) => {
             if (err) {
                 reject(err);
@@ -123,8 +127,10 @@ export const Query = <T = any> (query: string, values?: any) => {
 // .then(c => console.log(c))
 
 
- export default{
-     blogs,
-     blogtags
-  
- }
+export default {
+    blogs,
+    blogtags,
+    authors,
+    tags
+
+}

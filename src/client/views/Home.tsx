@@ -2,7 +2,9 @@ import * as React from 'react';
 import { useState, useEffect } from 'react';
 import type { IBlog } from '../utils/interfaces';
 import BlogCard from '../component/BlogCard';
-import Form from '../component/Form';
+// import Form from '../component/Form';
+import Compose from './Compose';
+import Navbar from '../component/Navbar';
 
 const Home: React.FC<HomeProps> = (props) => {
 
@@ -23,16 +25,20 @@ const Home: React.FC<HomeProps> = (props) => {
 
     return (
         <main className="container">
+              <Navbar />
             <section className="row justify-content-center mt-3">
 
-                <Form pizza={getBlogs} />
+{/*               
+                <Form pizza={getBlogs} /> */}
+                {/* <Compose pizza={getBlogs} /> */}
+                {/* < Compose /> */}
 
             </section>
 
             <section className="row justify-content-center mt-3">
 
                 {blogs.map(blog => (
-                    <BlogCard key={`blog-card-${blog.id}`} blog={blog}/>
+                    <BlogCard key={`blog-card-${blog.id}`} blog={blog} />
 
                 ))}
 
@@ -44,7 +50,7 @@ const Home: React.FC<HomeProps> = (props) => {
 }
 
 interface HomeProps {
-    
+
 
 
 }

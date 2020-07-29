@@ -1,8 +1,6 @@
 import * as express from 'express';
 import db from '../db';
 
-
-
 const router = express.Router();
 
 // //Testing example
@@ -69,9 +67,11 @@ router.delete('/:id', async (req, res) => {
 // //Post
 router.post('/', async (req, res) => {
     const newBlog = req.body;
+    delete newBlog.fail;
     try {
 
-        const cannedResponse = await db.blogs.insert(newBlog.title, newBlog.content, newBlog.authorid);
+        if(!newBlog.image_url) newBlog.image_url = "https://i.ytimg.com/vi/froSxJ3T6jE/maxresdefault.jpg"
+        const cannedResponse = await db.blogs.insert(newBlog.title, newBlog.content, newBlog.authorid, newBlog.image_url);
         res.status(201).json({ msg: "New blog inserted", id: cannedResponse.insertId });
 
     } catch (error) {
