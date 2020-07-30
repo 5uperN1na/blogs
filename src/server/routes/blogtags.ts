@@ -10,7 +10,7 @@ router.get('/:blogid', async (req, res) => {
 const blogid = Number(req.params.blogid)
     try {
 
-        const blogtags = await db.blogtags.oneBlogTag(blogid);
+        const [blogtags] = await db.blogtags.oneBlogTag(blogid);
         res.json(blogtags);
 
     } catch (error) {
@@ -19,6 +19,30 @@ const blogid = Number(req.params.blogid)
     }
 
 });
+
+
+router.delete('/:blogid', async (req, res) => {
+    const blogid = Number(req.params.blogid)
+        try {
+    
+            const cannedResponse = await db.blogtags.deleteBlogTag(blogid);
+            res.json(cannedResponse);
+    
+        } catch (error) {
+            console.log(error);
+            res.status(500).json({ msg: 'code broke', error })
+        }
+    
+    });
+
+
+
+
+
+
+
+
+
 
 
     // router.get('/:blogid?', async (req, res) => {

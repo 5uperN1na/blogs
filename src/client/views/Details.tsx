@@ -32,17 +32,42 @@ const Details: React.FC<DetailsProps> = (props) => {
 
 
 
+    // const deleteBlog = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    //     // e.preventDefault(); 
+    //     const res = await fetch(`/api/blogs/${blogid}`, {
+    //         method: 'DELETE',
+
+    //     });
+    //     const serverMsg = await res.json();
+    //     console.log(serverMsg);
+    //     history.push('/');
+
+    // };
+
+
     const deleteBlog = async (e: React.MouseEvent<HTMLButtonElement>) => {
-        // e.preventDefault(); 
+        // e.preventDefault();
+
+        const res3 = await fetch(`/api/blogtags/${blogid}`, {
+            method: 'DELETE',
+
+
+        })
+        const blogtagPost = await res3.json();
+        console.log(blogtagPost);
+
+
         const res = await fetch(`/api/blogs/${blogid}`, {
             method: 'DELETE',
 
-        });
-        const serverMsg = await res.json();
-        console.log(serverMsg);
+
+        })
+        const blogDelete = await res.json();
+        console.log(blogDelete);
+
         history.push('/');
 
-    }
+    };
 
 
 
@@ -58,8 +83,8 @@ const Details: React.FC<DetailsProps> = (props) => {
                     <div>
                         {blogtags?.map(blogtag => (
 
-                            <h6 key={`blogtag-key-${blogtag.id}`} ><span className="badge badge-pill badge-primary text-black">{blogtag.name}</span></h6>
-
+                            <h6 key={`blogtag-key-${blogtag.id}`} > <span className="badge badge-pill badge-primary text-black">{blogtag.name}</span></h6>
+                            // <option key={`blogtag-key-${blogtag.id}`} value={blogtag.id}>{blogtag.name}</option>
                         ))}
                     </div>
                     <div className="card-body bg-success">

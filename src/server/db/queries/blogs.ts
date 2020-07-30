@@ -10,7 +10,10 @@ const all = () => Query('SELECT blogs.*, authors.name, authors.email FROM blogs 
 const one = (id: number) => Query('SELECT blogs.*, authors.name, authors.email FROM blogs JOIN authors on authors.id = blogs.authorid WHERE blogs.id = ?', [id]);
 
 //delete blog based off of an id passed
-const deleteBlog = (id: number) => Query('DELETE FROM blogs WHERE id = ?', [id]);
+// const deleteBlog = (id: number) => Query('DELETE FROM blogs WHERE id = ?', [id]);
+
+//stored procedure for delete
+const deleteBlog = (id: number) => Query('CALL delete_blog (?)', [id]);
 
 const insert = (title: string, content: string, authorid: number, image_url: string) => {
     return Query('INSERT INTO blogs (title, content, authorid, image_url) VALUE (?, ?, ?, ?)', [title, content, authorid, image_url]);
