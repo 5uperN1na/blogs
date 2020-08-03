@@ -1,4 +1,5 @@
 import * as mysql from 'mysql';
+import config from '../config';
 import blogs from './queries/blogs';
 import blogtags from './queries/blogtags';
 import tags from './queries/tags';
@@ -6,12 +7,28 @@ import authors from './queries/authors';
 import { rejects } from 'assert';
 import { resolve } from 'path';
 
-const pool = mysql.createPool({
-    host: 'localhost',
-    user: 'blog_user',
-    password: 'blog_user',
-    database: 'blogs'
-});
+//sql connect from blogs lab
+// const pool = mysql.createPool({
+//     host: 'localhost',
+//     user: 'blog_user',
+//     password: 'blog_user',
+//     database: 'blogs'
+// });
+
+//sql connect from blogs lab
+// const pool = mysql.createPool({
+//     host: 'localhost',
+//     user: 'blog_author',
+//     password: 'blog_author',
+//     database: 'blogs'
+// });
+
+
+
+
+
+
+
 
 
 //simple join and console query results to node screen
@@ -103,10 +120,12 @@ const pool = mysql.createPool({
 //     })
 // }
 
+//new sql connection with .env
+
+const pool = mysql.createPool(config.mysql);
 
 
 //Helper function to use queries
-
 
 export const Query = <T = any>(query: string, values?: any) => {
     return new Promise<T>((resolve, reject) => {
