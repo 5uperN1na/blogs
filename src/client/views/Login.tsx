@@ -1,7 +1,3 @@
-
-
-//HOOK TEMPLATE
-
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
@@ -16,8 +12,8 @@ const Login: React.FC<LoginProps> = (props) => {
     const location = useLocation<{ msg: string }>();
 
 
-    const [email, setEmail] = useState<string>('julien@test.com');
-    const [password, setPassword] = useState<string>('123');
+    const [email, setEmail] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
 
     const login = async (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();

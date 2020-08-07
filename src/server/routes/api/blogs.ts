@@ -52,7 +52,7 @@ router.get('/:id?', async (req, res) => {
 
 
 // //Delete
-router.delete('/:id', async (req, res) => {
+router.delete('/:id',passport.authenticate('jwt'), async (req, res) => {
     const id = Number(req.params.id);
     try {
         await db.blogs.deleteBlog(id);
@@ -67,7 +67,7 @@ router.delete('/:id', async (req, res) => {
 
 
 // //Post
-router.post('/', passport.authenticate('jwt') ,async (req: ReqUser, res) => {
+router.post('/', passport.authenticate('jwt'), async (req: ReqUser, res) => {
     const newBlog = req.body;
     const authorid = req.user.id;
     delete newBlog.fail;

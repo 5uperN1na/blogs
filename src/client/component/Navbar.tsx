@@ -13,7 +13,7 @@ const Navbar: React.FC<NavbarProps> = () => {
             <NavLink className="text text-decoration-none text-danger mx-3 py-5 btn-btn-link" exact to='/login'>Login </NavLink>
             <NavLink className="text text-decoration-none text-danger mx-3 py-5 btn-btn-link" exact to='/register'>Register </NavLink>
             <NavLink className="text text-decoration-none text-danger mx-3 py-5 btn-btn-link" exact to='/compose'>Add Blog</NavLink>
-            <NavLink className="text text-decoration-none text-danger mx-3 py-5 btn-btn-link" exact to='/lulz'>Lulz</NavLink>
+            {/* <NavLink className="text text-decoration-none text-danger mx-3 py-5 btn-btn-link" exact to='/lulz'>Lulz</NavLink> */}
             <span className="text text-decoration-none text-danger mx-3 py-5 btn-btn-link" onClick={() => localStorage.clear()} >Logout</span>
 
 

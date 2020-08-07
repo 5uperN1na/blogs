@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import type { IBlog } from '../utils/interfaces';
 import BlogCard from '../component/BlogCard';
 // import Form from '../component/Form';
-import Compose from './Compose';
+// import Compose from './Compose';
 import Navbar from '../component/Navbar';
 import apiService from '../utils/api-service';
 

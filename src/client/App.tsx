@@ -5,7 +5,7 @@ import Details from './views/Details';
 import Pizza from './views/Home';
 import Edit from './views/Edit';
 import Compose from './views/Compose';
-import Lulz from './views/Lulz';
+// import Lulz from './views/Lulz';
 import Login from './views/Login';
 import Register from './views/Register';
 import PrivateRoute from './component/PrivateRoute';
@@ -33,9 +33,9 @@ const App: React.FC<AppProps> = (props) => {
 					<Compose />
 				</PrivateRoute>
 
-				<PrivateRoute exact path="/lulz">
+				{/* <PrivateRoute exact path="/lulz">
 					< Lulz />
-				</PrivateRoute>
+				</PrivateRoute> */}
 
 				<PrivateRoute exact path="/details/:blogid">
 					<Details />
