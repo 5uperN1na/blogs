@@ -5,20 +5,19 @@ import BlogCard from '../component/BlogCard';
 // import Form from '../component/Form';
 import Compose from './Compose';
 import Navbar from '../component/Navbar';
+import apiService from '../utils/api-service';
 
 const Home: React.FC<HomeProps> = (props) => {
 
     const [blogs, setBlogs] = useState<IBlog[]>([]);
 
     const getBlogs = async () => {
-        const res = await fetch('/api/blogs');
-        const blogs = await res.json();
+        const blogs = await apiService('/api/blogs');
         setBlogs(blogs);
     };
 
     useEffect(() => {
         getBlogs();
-
     }, []);
 
 

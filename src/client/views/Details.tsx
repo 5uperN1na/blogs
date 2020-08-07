@@ -4,6 +4,7 @@ import { useParams, useHistory, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { IBlog, ITag } from '../utils/interfaces';
 import Navbar from '../component/Navbar';
+import apiService from '../utils/api-service';
 
 const Details: React.FC<DetailsProps> = (props) => {
     const { blogid } = useParams();
@@ -19,10 +20,16 @@ const Details: React.FC<DetailsProps> = (props) => {
 
     useEffect(() => {
         const getBlog = async () => {
-            const res = await fetch(`/api/blogs/${blogid}`);
-            const blog = await res.json();
-            const res2 = await fetch(`/api/blogtags/${blogid}`);
-            const blogtags = await res2.json();
+            // const res = await fetch(`/api/blogs/${blogid}`);
+            const blog = await apiService(`/api/blogs/${blogid}`);
+            // const blog = await res.json();
+
+
+            // const res2 = await fetch(`/api/blogtags/${blogid}`);
+            const blogtags = await apiService(`/api/blogtags/${blogid}`);
+            // const blogtags = await res2.json();
+
+
             setBlog(blog);
             setBlogTags(blogtags);
         };
@@ -48,22 +55,28 @@ const Details: React.FC<DetailsProps> = (props) => {
     const deleteBlog = async (e: React.MouseEvent<HTMLButtonElement>) => {
         // e.preventDefault();
 
-        const res3 = await fetch(`/api/blogtags/${blogid}`, {
-            method: 'DELETE',
+        // const res3 = await fetch(`/api/blogtags/${blogid}`, {
+        //     method: 'DELETE',
 
 
-        })
-        const blogtagPost = await res3.json();
-        console.log(blogtagPost);
+        // })
+        // const blogtagPost = await res3.json();
+        // console.log(blogtagPost);
 
 
-        const res = await fetch(`/api/blogs/${blogid}`, {
-            method: 'DELETE',
+        const blogtagPost = await apiService(`/api/blogtags/${blogid}`, 'DELETE');
 
 
-        })
-        const blogDelete = await res.json();
-        console.log(blogDelete);
+        // const res = await fetch(`/api/blogs/${blogid}`, {
+        //     method: 'DELETE',
+
+
+        // })
+        // const blogDelete = await res.json();
+        // console.log(blogDelete);
+
+        const blogDelete = await apiService(`/api/blogs/${blogid}`, 'DELETE');
+
 
         history.push('/');
 

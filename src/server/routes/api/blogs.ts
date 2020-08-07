@@ -1,5 +1,7 @@
 import * as express from 'express';
+import * as passport from 'passport';
 import db from '../../db';
+import { ReqUser } from '../../utils/types';
 
 const router = express.Router();
 
@@ -65,13 +67,14 @@ router.delete('/:id', async (req, res) => {
 
 
 // //Post
-router.post('/', async (req, res) => {
+router.post('/', passport.authenticate('jwt') ,async (req: ReqUser, res) => {
     const newBlog = req.body;
+    const authorid = req.user.id;
     delete newBlog.fail;
     try {
 
         if(!newBlog.image_url) newBlog.image_url = "https://i.ytimg.com/vi/froSxJ3T6jE/maxresdefault.jpg"
-        const cannedResponse = await db.blogs.insert(newBlog.title, newBlog.content, newBlog.authorid, newBlog.image_url);
+        const cannedResponse = await db.blogs.insert(newBlog.title, newBlog.content, authorid, newBlog.image_url);
         res.status(201).json({ msg: "New blog inserted", id: cannedResponse.insertId });
 
     } catch (error) {
@@ -80,7 +83,6 @@ router.post('/', async (req, res) => {
     }
 
 });
-
 router.put('/:id', async (req, res) => {
     const id = Number(req.params.id);
     const editBlog = req.body;

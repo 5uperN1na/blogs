@@ -10,7 +10,7 @@ const router = Router();
 router.use('/lulz', lulzRouter);
 router.use('/authors', authorsRouter);
 router.use('/blogs', blogsRouter);
-router.use('/blogTagsRouter', blogTagsRouter);
-router.use('/tagsRouter', tagsRouter);
+router.use('/blogtags', blogTagsRouter);
+router.use('/tags', tagsRouter);
 
 export default router;

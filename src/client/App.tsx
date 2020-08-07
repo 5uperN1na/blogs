@@ -2,10 +2,13 @@ import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Details from './views/Details';
-import Home from './views/Home';
+import Pizza from './views/Home';
 import Edit from './views/Edit';
 import Compose from './views/Compose';
-
+import Lulz from './views/Lulz';
+import Login from './views/Login';
+import Register from './views/Register';
+import PrivateRoute from './component/PrivateRoute';
 
 const App: React.FC<AppProps> = (props) => {
 	return (
@@ -13,24 +16,37 @@ const App: React.FC<AppProps> = (props) => {
 		<BrowserRouter>
 			<Switch>
 				<Route exact path="/">
-					<Home />
+					<Pizza />
 				</Route>
 
-				<Route exact path="/compose">
+				<Route exact path="/login">
+					<Login />
+				</Route>
+
+
+				<Route exact path="/register">
+					<Register />
+				</Route>
+
+
+				<PrivateRoute exact path="/compose">
 					<Compose />
-				</Route>
+				</PrivateRoute>
 
-				<Route exact path="/details/:blogid">
+				<PrivateRoute exact path="/lulz">
+					< Lulz />
+				</PrivateRoute>
+
+				<PrivateRoute exact path="/details/:blogid">
 					<Details />
-				</Route>
-				
+				</PrivateRoute>
+
 				<Route exact path="/edit/:blogid">
 					<Edit />
 				</Route>
 			</Switch>
 		</BrowserRouter>
-
-    );
+	);
 }
 
 interface AppProps { }

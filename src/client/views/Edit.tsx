@@ -8,6 +8,7 @@ import type { IAuthor } from '../utils/interfaces';
 import type { IBlogtag } from '../utils/interfaces';
 import Navbar from '../component/Navbar';
 import blogtags from '../../server/db/queries/blogtags';
+import apiService from '../utils/api-service';
 
 
 const Edit: React.FC<EditProps> = (props) => {
@@ -29,19 +30,23 @@ const Edit: React.FC<EditProps> = (props) => {
 
     const editBlog = async (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        const res = await fetch(`/api/blogs/${blogid}`, {
 
-            method: 'PUT',
-            headers: {
-                'content-type': 'application/json'
-            },
-            // body: JSON.stringify({ name: name, text: chirp })
-            body: JSON.stringify({ title, content })
+        const pizza = await apiService(`/api/blogs/${blogid}`, 'PUT', { title, content });
 
 
-        });
-        const serverMsg = await res.json();
-        console.log(serverMsg);
+        // const res = await fetch(`/api/blogs/${blogid}`, {
+
+        //     method: 'PUT',
+        //     headers: {
+        //         'content-type': 'application/json'
+        //     },
+        //     // body: JSON.stringify({ name: name, text: chirp })
+        //     body: JSON.stringify({ title, content })
+
+
+        // });
+        // const serverMsg = await res.json();
+        // console.log(serverMsg);
         history.push('/');
 
     }

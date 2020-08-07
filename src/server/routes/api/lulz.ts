@@ -11,7 +11,7 @@ router.get('/', passport.authenticate('jwt'), (req, res) => {
 
 });
 
-//PST /api/lulz
+//POST /api/lulz
 router.post('/', passport.authenticate('jwt'), async (req: ReqUser, res) => {
      const newBlog = req.body;
      const authorid = req.user.id;

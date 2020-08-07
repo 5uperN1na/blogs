@@ -1,7 +1,17 @@
 import * as express from 'express';
+import * as passport from 'passport';
 import db from '../../db';
 
 const router = express.Router();
+
+//GET /api/lulz
+// router.get('/', passport.authenticate('jwt'), (req, res) => {
+//     console.log(req.user);
+//     res.json({msg: "I like to mess with people for the lulz!"});
+
+// });
+
+
 
 //GET
 router.get('/', async (req, res)=> {

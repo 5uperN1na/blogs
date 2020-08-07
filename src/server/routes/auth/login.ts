@@ -2,10 +2,11 @@ import { Router } from 'express';
 import * as passport from 'passport';
  import { createToken } from '../../utils/tokens';
  import { ReqUser } from '../../utils/types';
+import { isString } from 'util';
 
 const router = Router();
 
-//post auth/login
+//post /auth/login
 router.post('/', passport.authenticate('local'), async (req: ReqUser, res) => {
   
     try {
