@@ -17,5 +17,19 @@ export default {
 auth: {
     secret: process.env.JWT_SECRET
 
+},
+
+stripe: {
+    key: process.env.STRIPE_SECRET
+},
+
+mailgun: {
+    key: process.env.MAILGUN_SECRET,
+    domain: process.env.MAILGUN_DOMAIN
+
 }
+
+
+
+
 }

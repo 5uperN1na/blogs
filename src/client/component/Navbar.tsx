@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { NavLink } from 'react-router-dom';
-import { createTextSpanFromBounds } from 'typescript';
+
 
 
 const Navbar: React.FC<NavbarProps> = () => {
@@ -13,6 +13,8 @@ const Navbar: React.FC<NavbarProps> = () => {
             <NavLink className="text text-decoration-none text-danger mx-3 py-5 btn-btn-link" exact to='/login'>Login </NavLink>
             <NavLink className="text text-decoration-none text-danger mx-3 py-5 btn-btn-link" exact to='/register'>Register </NavLink>
             <NavLink className="text text-decoration-none text-danger mx-3 py-5 btn-btn-link" exact to='/compose'>Add Blog</NavLink>
+            <NavLink className="text text-decoration-none text-danger mx-3 py-5 btn-btn-link" exact to='/donate'>Donate</NavLink>
+            <NavLink className="text text-decoration-none text-danger mx-3 py-5 btn-btn-link" exact to='/contact'>Contact</NavLink>
             {/* <NavLink className="text text-decoration-none text-danger mx-3 py-5 btn-btn-link" exact to='/lulz'>Lulz</NavLink> */}
             <span className="text text-decoration-none text-danger mx-3 py-5 btn-btn-link" onClick={() => localStorage.clear()} >Logout</span>
 
@@ -24,8 +26,6 @@ const Navbar: React.FC<NavbarProps> = () => {
 
 
 }
-
-
 
 
 
